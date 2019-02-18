@@ -737,8 +737,10 @@ extension DropDown {
 
 		let x = anchorViewX + topOffset.x
 		var y = (anchorViewMaxY + topOffset.y) - tableHeight
-
-		let windowY = window.bounds.minY + DPDConstant.UI.HeightPadding
+        
+        let statusBarHeight = UIApplication.shared.isStatusBarHidden ? 0 : UIApplication.shared.statusBarFrame.height
+        
+        let windowY = window.bounds.minY + max(statusBarHeight, DPDConstant.UI.HeightPadding)
 
 		if y < windowY {
 			offscreenHeight = abs(y - windowY)
